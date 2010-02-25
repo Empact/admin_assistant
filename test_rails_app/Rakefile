@@ -9,5 +9,16 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+namespace :db do
+  task :set_default_config do
+    unless File.exist?('config/database.yml')
+      puts "No database config found, so we'll use the default"
+      FileUtils.cp('config/database.yml.example', 'config/database.yml')
+    end
+  end
+end
+
+task :test => :'db:set_default_config'
+task :spec => :'db:set_default_config'
 task :default => [:spec, :test]
 
