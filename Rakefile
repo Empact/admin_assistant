@@ -32,11 +32,12 @@ task :spec do
           detect { |l| l=~ /^rails / }.strip.
           gsub(/^.*\((.*)\).*$/, '\1').split(/\s*,\s*/)
   missing = supported_versions - locally_installed_versions
-  if !missing.empty?
-    puts "Missing Rails versions #{missing.join(',')}; please install and then re-run tests"
+  if !missing.empty? && !ENV['INSTALLED_VERSIONS']
+    puts "Missing Rails versions #{missing.join(',')}; please install and then re-run tests, " \
+         "or run against installed versions by running with the INSTALLED_VERSIONS variable set"
   else
     cmd = "cd test_rails_app && " + (
-      supported_versions.map { |version|
+      locally_installed_versions.map { |version|
         "echo '===== Testing #{version} =====' && RAILS_GEM_VERSION=#{version} rake"
       }.join(" && ")
     )
