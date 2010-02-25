@@ -19,10 +19,10 @@ begin
     s.email = 'sera@fhwang.net'
     s.homepage = 'http://github.com/fhwang/admin_assistant/tree/master'
     s.files = FileList[%w(
-      MIT-LICENSE README *.rb Rakefile lib/*.rb lib/admin_assistant/*.rb 
+      MIT-LICENSE README *.rb Rakefile generators/**/*.* lib/*.rb lib/admin_assistant/*.rb
       lib/admin_assistant/*/*.rb lib/images/*.png lib/javascripts/*.js
-      lib/stylesheets/*.css lib/views/*.erb tasks/*.rake 
-      vendor/ar_query/MIT-LICENSE vendor/ar_query/README vendor/ar_query/*.rb 
+      lib/stylesheets/*.css lib/views/*.erb tasks/*.rake
+      vendor/ar_query/MIT-LICENSE vendor/ar_query/README vendor/ar_query/*.rb
       vendor/ar_query/*/*.rb vendor/ar_query/*/*.rake
     )].to_a
     s.add_dependency 'will_paginate'
